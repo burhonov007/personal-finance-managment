@@ -45,7 +45,7 @@ Welcome to the **Personal Finance Management**! This project aims to provide a p
 ## How to start
 1) Clone the repository: 
 ```
-git clone https://github.com/burkhonov007/
+git clone https://github.com/burhonov007/personal-finance-managment.git
 ```
 2) Create a virtual environment: 
 ```
