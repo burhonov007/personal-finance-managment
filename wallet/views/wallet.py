@@ -1,14 +1,19 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
 from ..models import Wallet
 from user.models import CustomUser
 from ..serializers import WalletSerializer, WalletCreateSerializer, WalletEditSerializer
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.exceptions import ValidationError
 
 class WalletViewSet(viewsets.ModelViewSet):
     queryset = Wallet.objects.all()
     permission_classes = [IsAuthenticated]
+
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['name', 'balance', 'currency']
+    search_fields = ['name', 'user__username', 'currency__name']
 
     def get_serializer_class(self):
         if self.action == 'create':

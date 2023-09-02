@@ -9,9 +9,7 @@ class Transaction(models.Model):
     amount = models.DecimalField("amount",max_digits=8,decimal_places=2)
     currency_code = models.CharField(max_length=3)
     description = models.TextField("Description", blank=True)
-    
-    #  status
-    
+   
     TRANSACTION_TYPE_CHOICES = (
         ('income', 'Приход'),
         ('expense', 'Расход')

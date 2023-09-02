@@ -34,10 +34,9 @@ class TransactionDetailViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
-    filterset_fields = ['transaction_type', 'wallet', 'date']
-    ordering_fields = ['date', 'amount']
-    search_fields = ['description', 'transaction_type']
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['date', 'amount'] 
+    search_fields = ['wallet__name', 'category__name', 'description'] 
 
 class TransactionExpenseViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     permission_classes = [IsAuthenticated]
